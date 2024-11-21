@@ -20,24 +20,6 @@ disp(L);
 disp('Y:');
 disp(Y);
 
-% 3D графік для точок даних
-figure;
-scatter3(K, L, Y, 'filled');
-xlabel('K');
-ylabel('L');
-zlabel('Y');
-grid on;
-title('3D Scatter Plot with Cobb-Douglas Production Function');
-
-% Створення сітки для значень K і L
-[K_grid, L_grid] = meshgrid(1:N, 1:N);
-Y_grid = X_A * (K_grid .^ X_alpha) .* (L_grid .^ X_beta);
-
-% Додавання поверхні на графік
-hold on;
-surf(K_grid, L_grid, Y_grid, 'FaceAlpha', 0.3, 'EdgeColor', 'none');
-legend('Дані (точки)', 'Виробнича функція (поверхня)');
-hold off;
 
 % 3. Побудова матриці H і перевірка її рангу
 
@@ -83,6 +65,27 @@ X_A = exp(X_lnA);
 disp(['A = ', num2str(X_A)]);
 disp(['alpha = ', num2str(X_alpha)]);
 disp(['beta = ', num2str(X_beta)]);
+
+
+
+% 3D графік для точок даних
+figure;
+scatter3(K, L, Y, 'filled');
+xlabel('K');
+ylabel('L');
+zlabel('Y');
+grid on;
+title('3D Scatter Plot with Cobb-Douglas Production Function');
+
+% Створення сітки для значень K і L
+[K_grid, L_grid] = meshgrid(1:N, 1:N);
+Y_grid = X_A * (K_grid .^ X_alpha) .* (L_grid .^ X_beta);
+
+% Додавання поверхні на графік
+hold on;
+surf(K_grid, L_grid, Y_grid, 'FaceAlpha', 0.3, 'EdgeColor', 'none');
+legend('Дані (точки)', 'Виробнича функція (поверхня)');
+hold off;
 
 % 5. Перевірити критерій значущості коефіцієнтів регресії і визначити довірчі границі
 
